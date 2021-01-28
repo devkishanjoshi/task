@@ -7,7 +7,7 @@ def dockerBuildPush(imageName){
 }
 
 def deploymentK8s(commitId,deploymentName,imageName){
-	withKubeConfig([credentialsId: 'minikube']) {    	
+	withKubeConfig([credentialsId: 'updatedMinikubeConfig']) {    	
 		sh "cat k8s/deployment.yaml | sed 's/{{COMMIT_ID}}/${commitId}/g' | kubectl apply -f -"
 		sh "kubectl annotate deployment ${deploymentName} kubernetes.io/change-cause='${imageName}' --record=false --overwrite=true"
 		sh 'kubectl apply -f k8s/service.yaml'
