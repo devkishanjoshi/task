@@ -14,7 +14,7 @@ def deploymentK8s(commitId,deploymentName,imageName){
 	}
 }
 def test(){
-	echo "Testing"
+	echo "Testing !!"
 }
 
 node {
