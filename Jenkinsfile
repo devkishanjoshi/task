@@ -23,7 +23,7 @@ node {
     def dev_name
 
     stage('SCM') {
-	    githubPush()
+	    
 		cleanWs()
         checkout scm 
         sh 'git rev-parse --short HEAD > .git/commit-id'
