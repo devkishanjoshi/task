@@ -41,14 +41,14 @@ node {
 			test()
 		}	
 			
-		stage('Docker Build/Push Cleanup') {
-			dockerBuildPush("${imageName}")
-		}
+// 		stage('Docker Build/Push Cleanup') {
+// 			dockerBuildPush("${imageName}")
+// 		}
 
-		stage('Deployment') {
-            STAGE=env.STAGE_NAME
-			deploymentK8s("${commitId}", "${deploymentName}", "${imageName}")	
-		}
+// 		stage('Deployment') {
+//             STAGE=env.STAGE_NAME
+// 			deploymentK8s("${commitId}", "${deploymentName}", "${imageName}")	
+// 		}
 	} catch(error){
         sh "echo ${error}"
 	}	
