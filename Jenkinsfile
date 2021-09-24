@@ -24,13 +24,15 @@ node {
 
     stage('SCM') {
 	    
-		cleanWs()
-        checkout scm 
-        sh 'git rev-parse --short HEAD > .git/commit-id'
-        commitId = readFile('.git/commit-id').trim()
-		dev_email = sh(script: "git --no-pager show -s --format='%ae'", returnStdout: true).trim()
-		dev_name = sh(script: "git --no-pager show -s --format='%an'", returnStdout: true).trim()		
-        }
+// 		cleanWs()
+//         checkout scm 
+//         sh 'git rev-parse --short HEAD > .git/commit-id'
+//         commitId = readFile('.git/commit-id').trim()
+// 		dev_email = sh(script: "git --no-pager show -s --format='%ae'", returnStdout: true).trim()
+// 		dev_name = sh(script: "git --no-pager show -s --format='%an'", returnStdout: true).trim()		
+//         }
+
+git url: 'https://github.com/devkishanjoshi/task.git',branch: 'master'
 
 	def deploymentName = "test-deployment"
 	def imageName = "devil1211/test:${commitId}"
