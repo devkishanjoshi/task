@@ -27,5 +27,15 @@ node {
 		}	 
 	}	
 
+	else if (env.BRANCH_NAME.equals("master")){
+		try{
+                        stage('Docker Build/Push Cleanup') {
+                STAGE=env.STAGE_NAME
+                        sh "echo branch Master"
+                        }
 
+                } catch(error){
+                        sh "echo Error occured"
+                }
+}
 }
